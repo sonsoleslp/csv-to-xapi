@@ -331,6 +331,19 @@ var contextActivitiesExample = {
 // Page Load
 $(function(){
     // Pretty Print
+    var beforeUnloadHandler = function(){
+        console.log("sdfsdfs")
+        localStorage.endpoint = $('#endpoint').prop("value") || '';
+        localStorage.username = $('#username').prop("value") || '';
+        localStorage.password = $('#password').prop("value") || '';
+    }
+
+
+    window.addEventListener("beforeunload", beforeUnloadHandler)
+
+    $('#endpoint').prop("value", localStorage.endpoint || '');
+    $('#username').prop("value", localStorage.username || '');
+    $('#password').prop("value", localStorage.password || '');
     prettyPrint();
 
     // Populate the predefined verbs dropdown
